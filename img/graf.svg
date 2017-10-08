@@ -1,0 +1,28 @@
+<svg width="194" height="194" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>Layer 1</title>
+  <ellipse fill="#060606" stroke-width="0" fill-opacity="null" cx="97" cy="97" id="svg_10" rx="88" ry="88"/>
+ </g>
+ <g>
+  <title>Layer 2</title>
+  <g id="svg_9">
+   <line fill-opacity="null" x1="48" y1="138" x2="98.5" y2="99" id="svg_1" stroke-linejoin="null" stroke-linecap="null" fill="none" stroke="#FFF" stroke-width="2" stroke-opacity="null"/>
+   <line fill-opacity="null" x1="98.5" y1="99" x2="105" y2="150" id="svg_1" stroke-linejoin="null" stroke-linecap="null" fill="none" stroke="#FFF" stroke-width="2" stroke-opacity="null"/>
+   <line fill-opacity="null" x1="53" y1="76" x2="149" y2="84" id="svg_1" stroke-linejoin="null" stroke-linecap="null" fill="none" stroke="#FFF" stroke-width="2" stroke-opacity="null"/>
+   <line fill-opacity="null" x1="53" y1="76" x2="105" y2="150" id="svg_1" stroke-linejoin="null" stroke-linecap="null" fill="none" stroke="#FFF" stroke-width="2" stroke-opacity="null"/>
+   <line fill-opacity="null" x1="98.5" y1="99" x2="149" y2="84" id="svg_1" stroke-linejoin="null" stroke-linecap="null" fill="none" stroke="#FFF" stroke-width="2" stroke-opacity="null"/>
+   <line fill-opacity="null" x1="53" y1="76" x2="98.5" y2="99" id="svg_1" stroke-linejoin="null" stroke-linecap="null" fill="none" stroke="#FFF" stroke-width="2" stroke-opacity="null"/>
+   <line fill-opacity="null" x1="53" y1="76" x2="121" y2="35" id="svg_1" stroke-linejoin="null" stroke-linecap="null" fill="none" stroke="#FFF" stroke-width="2" stroke-opacity="null"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 3</title>
+  <ellipse fill="#d61c08" cx="48" cy="138" id="svg_2" rx="8" ry="8"/>
+  <ellipse fill="#0159aa" cx="98.5" cy="99" id="svg_3" rx="8" ry="8"/>
+  <ellipse fill="#0159aa" cx="105" cy="150" id="svg_4" rx="8" ry="8"/>
+  <ellipse fill="#d61c08" cx="53" cy="76" id="svg_5" rx="8" ry="8"/>
+  <ellipse fill="#d61c08" cx="149" cy="84" id="svg_6" rx="8" ry="8"/>
+  <ellipse fill="#0159aa" cx="121" cy="35" id="svg_7" rx="8" ry="8"/>
+  <ellipse fill="#0ca80a" cx="147" cy="123" id="svg_8" rx="8" ry="8"/>
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+{
+  "short_name": "Graf FME",
+  "name": "El graf alternatiu de la FME",
+  "icons": [
+    {
+      "src": "img/graf.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "background_color": "#060606",
+  "theme_color": "#060606",
+  "display": "fullscreen",
+  "start_url": "graf.php?utm_source=homescreen"
+}
