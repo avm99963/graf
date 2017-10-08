@@ -10,7 +10,17 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-blue.min.css" />
 
     <style>
-
+    .mdl-card {
+      height: 320px;
+    }
+    .mdl-card > .mdl-card__title.graf {
+      color: #fff;
+      background: url("img/graf_screenshot.png") center top 15% no-repeat #46B6AC;
+    }
+    .misc {
+      color: #fff;
+      background: #00695C;
+    }
     </style>
   </head>
   <body>
@@ -25,15 +35,28 @@
         <div class="page-content">
           <div class="mdl-grid">
             <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-card">
-              <div class="mdl-card__title mdl-card--expand">
+              <div class="mdl-card__title mdl-card--expand graf">
                 <h2 class="mdl-card__title-text">El graf</h2>
               </div>
               <div class="mdl-card__supporting-text">
-                El graf
+                Una versió de només lectura del graf, optimitzada per navegadors móvils i amb una interfície millorada.
               </div>
               <div class="mdl-card__actions mdl-card--border">
                 <a href="graf.php" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                  Ves-hi
+                  Vés-hi
+                </a>
+              </div>
+            </div>
+            <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-card">
+              <div class="mdl-card__title mdl-card--expand misc">
+                <h2 class="mdl-card__title-text">Miscelània</h2>
+              </div>
+              <div class="mdl-card__supporting-text">
+                Mira estadístiques sobre el graf, les últimes incorporacions i rep per correu electrònic les últimes novetats del graf.
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a href="javascript:alert('En construcció');" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                  Vés-hi
                 </a>
               </div>
             </div>

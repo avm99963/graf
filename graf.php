@@ -1,3 +1,18 @@
+<?php
+require_once("config.php");
+
+session_start();
+
+if (!isset($_POST["password"])) {
+    header("Location: login.php");
+    exit();
+}
+
+if ($_POST["password"] != "forallexists") {
+    header("Location: login.php?msg=wrong");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html>
   <head>

@@ -1,4 +1,6 @@
 <?php
+require_once("config.php");
+
 class write {
   public static function do($json) {
     print_r(json_encode($json));
