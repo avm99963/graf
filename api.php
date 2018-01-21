@@ -18,7 +18,7 @@ if (!isset($_GET["action"])) {
 
 switch ($_GET["action"]) {
   case "getgraf":
-  $graf = file_get_contents("https://dirba.io/grafo/api.php?req=getGraph");
+  $graf = file_get_contents("https://grafo.dirba.io/api.php?req=getGraph");
   echo $graf;
   break;
 
