@@ -40,7 +40,10 @@ if ($_POST["password"] != "forallexists") {
   <body>
     <button id="zoomin" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">zoom_in</i></button>
     <button id="zoomout" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">zoom_out</i></button>
-
+    
+    <!-- Trigger/Open The Search Box -->
+    <button id="searchButton"class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">Busca</button>
+      
     <div id="backdrop-container" style="display: none;">
       <div id="backdrop"></div>
     </div>
