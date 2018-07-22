@@ -23,6 +23,11 @@ if ($_POST["password"] != "forallexists") {
     <link rel="manifest" href="manifest.json">
 
     <link rel="stylesheet" href="css/styles.css">
+      
+    <!-- Seach Bar CSS files -->  
+    <link rel="stylesheet" href="./css/modal.css"></link>
+    <link rel="stylesheet" href="./css/autocomplete.css"></link>
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-blue.min.css" />
 
@@ -64,11 +69,38 @@ if ($_POST["password"] != "forallexists") {
         <p><span data-fill="year"></span>, <span data-fill="sex"></span>, <span data-fill="id"></span></p>
       </div>
     </div>
+    <!-- Search Box -->
+    <div id="searchBox" class="modal">
+      <!-- Search Box Content -->
+      <div class="modal-content">
+        <span class="closeBox">&times;</span>
 
+        <div class="in-box-content">
+            <center>
+                <form autocomplete="off">
+                  <div class="autocomplete">
+                    <input id="searchInput" type="text" placeholder="Busca una persona al graf">
+                  </div>
+                </form>
+            </center>
+        </div>
+      </div>
+    </div>
+       
     <div id="graf"></div>
-
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js/1.2.0/sigma.min.js"></script>
     <script src="js/script.js"></script>
+    
+    <!-- Search Bar JS files -->
+    <script src="./js/modal.js"></script>
+    <script src="./js/autocomplete.js" ></script>
+    <script>
+        /*initiate the autocomplete function on the "searchInput" element,
+        and pass along the nodes' names array as possible autocomplete values:*/
+        autocomplete(document.getElementById("searchInput"), graf.nodes);
+    </script>
+      
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <!--<script src="js/service-worker.js"></script>-->
   </body>
