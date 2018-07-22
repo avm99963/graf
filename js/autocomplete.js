@@ -41,6 +41,10 @@ function autocomplete(inp, obj) {
 				  { x: obj[n].x, y: obj[n].y, ratio: 0.5 },
 				  { duration: s.settings('animationsTime') || 300 }
 				);
+		  
+		  	// Close the search box
+			  var searchBox = document.getElementById('searchBox');
+			  searchBox.style.display = "none";
 			  
               /*close the list of autocompleted values,
               (or any other open lists of autocompleted values:*/
