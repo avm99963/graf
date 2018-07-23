@@ -91,6 +91,13 @@ html, body {
   margin: 0;
 }
 
+#searchButton {
+  position: absolute;
+  right: 10px;
+  bottom: 110px;
+  z-index: 100;
+}
+
 #zoomin {
   position: absolute;
   right: 10px;
