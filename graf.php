@@ -38,12 +38,10 @@ if ($_POST["password"] != "forallexists") {
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
   </head>
   <body>
-    <button id="zoomin" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">zoom_in</i></button>
+	<button id="searchButton"class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">search</i></button>
+	<button id="zoomin" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">zoom_in</i></button>
     <button id="zoomout" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">zoom_out</i></button>
-    
-    <!-- Trigger/Open The Search Box -->
-    <button id="searchButton"class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored">Busca</button>
-      
+	
     <div id="backdrop-container" style="display: none;">
       <div id="backdrop"></div>
     </div>
@@ -93,17 +91,17 @@ if ($_POST["password"] != "forallexists") {
     <div id="graf"></div>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js/1.2.0/sigma.min.js"></script>
-    <script src="js/script.js"></script>
-    
+    <script>
+		// Initialize the graph and the sigma
+		var s, graf;
+	</script>
+	   
     <!-- Search Bar JS files -->
     <script src="./js/modal.js"></script>
     <script src="./js/autocomplete.js" ></script>
-    <script>
-        /*initiate the autocomplete function on the "searchInput" element,
-        and pass along the nodes' names array as possible autocomplete values:*/
-        autocomplete(document.getElementById("searchInput"), graf.nodes);
-    </script>
-      
+	
+	<script src="js/script.js"></script>
+	
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <!--<script src="js/service-worker.js"></script>-->
   </body>
