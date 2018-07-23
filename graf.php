@@ -22,7 +22,8 @@ if ($_POST["password"] != "forallexists") {
     <meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="manifest" href="manifest.json">
 
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dialog.css">
+	<link rel="stylesheet" href="css/styles.css">
       
     <!-- Seach Bar CSS files -->  
     <link rel="stylesheet" href="./css/modal.css"></link>
@@ -53,11 +54,18 @@ if ($_POST["password"] != "forallexists") {
         <ul>
           <li><b>Any:</b> <span data-fill="year"></span></li>
           <li><b>Sexe:</b> <span data-fill="sex"></span></li>
-          <li><b>ID:</b> <span data-fill="id"></span></li>
+          <li><b>ID:</b> <span data-fill="id" id="node-id"></span></li>
         </ul>
-        <h3>Arestes (<span data-fill="n-edges"></span>):</h3>
-        <ul data-fill="edges">
-        </ul>
+		<div id="addedge-box">
+			<div id="addedge-button" class="addegde-button"><h2>Afegir una nova aresta +</h2></div>
+			<div id="addedge-msg" class="addegde-msg"><h2>Aresta afegida!</h2></div>
+			<input id="addedge-input" type="text" style="display:none;">
+		</div>	
+		<div id="edge-list">
+			<h3>Arestes (<span data-fill="n-edges"></span>):</h3>
+			<ul data-fill="edges">
+			</ul>
+		</div>
       </div>
       <div id="dialog-edge" style="display: none;">
       </div>
