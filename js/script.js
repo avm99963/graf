@@ -1,5 +1,3 @@
-var s, graf;
-
 function xhr(method, url, params, callback) {
   var http = new XMLHttpRequest();
   if (method == "POST") {
@@ -185,7 +183,15 @@ function init() {
       });
 
       s.refresh();
+	  autocomplete(document.getElementById("searchInput"), graf.nodes);
     });
+}
+
+function cameraGoto(nodeX, nodeY) {
+	sigma.misc.animation.camera( s.camera,
+	  { x: nodeX, y: nodeY, ratio: 1 },
+	  { duration: s.settings('animationsTime') || 300 }
+	);
 }
 
 window.addEventListener("load", init);

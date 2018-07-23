@@ -7,7 +7,7 @@ function autocomplete(inp, obj) {
       var a, b, i, val = this.value;
       /*close any already open lists of autocompleted values*/
       closeAllLists();
-      if (!val) return false;
+      if (!val || val.length < 3) return false;
       currentFocus = -1;
 	  
       /*create a DIV element that will contain the items (values):*/
@@ -20,39 +20,51 @@ function autocomplete(inp, obj) {
       /*for each item in the object...*/
       for (node in obj) {
 		var nomNode = obj[node].name;
-        /*check if the item starts with the same letters as the text field value:*/
-        if (nomNode.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
-          /*create a DIV element for each matching element:*/
-          b = document.createElement("DIV");
-          /*make the matching letters bold:*/
-          b.innerHTML = "<strong>" + nomNode.substr(0, val.length) + "</strong>";
-          b.innerHTML += nomNode.substr(val.length);
-		  b.innerHTML += " - <span class='autocomplete-year'>" + obj[node].year + "</span>";
-          /*insert a input field that will hold the current object item's value:*/
-          b.innerHTML += "<input type='hidden' value='" + node + "'>";
-          /*execute a function when someone clicks on the item value (DIV element):*/
-          b.addEventListener("click", function(e) {
-              /*insert the value for the autocomplete text field:*/
-              var n = this.getElementsByTagName("input")[0].value;
-			  inp.value = obj[n].name;
+		var nomDinamic = "";
+		var allWordsInName = nomNode.split(" ");
+				
+		if (nomNode.toUpperCase().includes(val.toUpperCase())) {
+			var parts = nomNode.toUpperCase().split(val.toUpperCase());
+			console.log(parts);
+			
+			  /*create a DIV element for each matching element:*/
+			  b = document.createElement("DIV");
+			  /*make the matching letters bold:*/
+			  if (parts[0].length == 0) b.innerHTML = "";
+			  else b.innerHTML = nomNode.substr(0, parts[0].length);
+			  b.innerHTML += "<strong>" + nomNode.substr(parts[0].length, val.length) + "</strong>";
+			  b.innerHTML += nomNode.substr(parts[0].length + val.length);
+			  b.innerHTML += " - <span class='autocomplete-year'>" + obj[node].year + "</span>";
+			  /*insert a input field that will hold the current object item's value:*/
+			  b.innerHTML += "<input type='hidden' value='" + node + "'>";
+			 
+			 /*execute a function when someone clicks on the item value (DIV element):*/
+			  b.addEventListener("click", function(e) {
+				  /*insert the value for the autocomplete text field:*/
+				  var n = this.getElementsByTagName("input")[0].value;
+				  inp.value = obj[n].name;
+				  
+				  // Move camera to desired node
+					sigma.misc.animation.camera( s.camera,
+					  { x: obj[n].x, y: obj[n].y, ratio: 0.5 },
+					  { duration: s.settings('animationsTime') || 300 }
+					);
 			  
-			  // Move camera to desired node
-				sigma.misc.animation.camera( s.camera,
-				  { x: obj[n].x, y: obj[n].y, ratio: 0.5 },
-				  { duration: s.settings('animationsTime') || 300 }
-				);
-		  
-		  	// Close the search box
-			  var searchBox = document.getElementById('searchBox');
-			  searchBox.style.display = "none";
-			  
-              /*close the list of autocompleted values,
-              (or any other open lists of autocompleted values:*/
-              closeAllLists();
-          });
-          a.appendChild(b);
+				  // Close the search box
+				  var searchBox = document.getElementById('searchBox');
+				  searchBox.style.display = "none";
+				  
+				  // Empty the input bar
+				  var searchInput = document.getElementById('searchInput');
+				  searchInput.value = "";
+				  
+				  /*close the list of autocompleted values,
+				  (or any other open lists of autocompleted values:*/
+				  closeAllLists();
+			  });
+			  a.appendChild(b);
+		  }
         }
-      }
   });
   /*execute a function presses a key on the keyboard:*/
   inp.addEventListener("keydown", function(e) {
@@ -106,7 +118,7 @@ function autocomplete(inp, obj) {
     }
   }
   /*execute a function when someone clicks in the document:*/
-  document.addEventListener("click", function (e) {
+  document.addEventListener("click", function (e) {	  
       closeAllLists(e.target);
   });
 }
