@@ -9,6 +9,7 @@ var closeBox = document.getElementsByClassName("closeBox")[0];
 
 // When the user clicks the button, open the box 
 searchButton.onclick = function() {
+	dialog.close();
     searchBox.style.display = "block";
 	// Focus on the search input bar
 	document.getElementById("searchInput").focus();
