@@ -20,15 +20,13 @@ function autocomplete(inp, obj) {
       /*for each item in the object...*/
       for (node in obj) {
 		var nomNode = obj[node].name;
-		var nomDinamic = "";
-		var allWordsInName = nomNode.split(" ");
 				
 		if (nomNode.toUpperCase().includes(val.toUpperCase())) {
 			var parts = nomNode.toUpperCase().split(val.toUpperCase());
-			console.log(parts);
 			
 			  /*create a DIV element for each matching element:*/
 			  b = document.createElement("DIV");
+			  
 			  /*make the matching letters bold:*/
 			  if (parts[0].length == 0) b.innerHTML = "";
 			  else b.innerHTML = nomNode.substr(0, parts[0].length);
@@ -62,7 +60,27 @@ function autocomplete(inp, obj) {
 				  (or any other open lists of autocompleted values:*/
 				  closeAllLists();
 			  });
-			  a.appendChild(b);
+			  
+			  // Set "data-edges" attribute and compare with others
+			  var nEdges = Object.keys(s.graph.neighbors(node)).length;
+			  b.dataset.edges = nEdges;
+			  var inserted = false;
+			  
+			  // Sort nodes by degree
+			  for (i in a.childNodes) {
+				  var child = a.childNodes[i];
+				  if (!child.dataset) break;
+				  if (nEdges > child.dataset.edges) {
+					  a.insertBefore(b, child);
+					  inserted = true;
+					  break;
+				  }
+			  }
+			  
+			  if (!inserted) {
+				  a.appendChild(b);
+				  console.log("inserted");
+			  }
 		  }
         }
   });
