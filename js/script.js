@@ -183,7 +183,7 @@ function init() {
       });
 
       s.refresh();
-	  autocomplete(document.getElementById("searchInput"), graf.nodes);
+	  autocomplete(document.getElementById("searchInput"), graf.nodes, "search");
     });
 }
 

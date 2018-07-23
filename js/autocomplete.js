@@ -1,4 +1,4 @@
-function autocomplete(inp, obj) {
+function autocomplete(inp, obj, act) {
   /*the autocomplete function takes two arguments,
   the text field element and an objay of possible autocompleted values:*/
   var currentFocus;
@@ -42,11 +42,16 @@ function autocomplete(inp, obj) {
 				  var n = this.getElementsByTagName("input")[0].value;
 				  inp.value = obj[n].name;
 				  
-				  // Move camera to desired node
-					sigma.misc.animation.camera( s.camera,
-					  { x: obj[n].x, y: obj[n].y, ratio: 0.5 },
-					  { duration: s.settings('animationsTime') || 300 }
-					);
+				  switch (act) {
+					case "search":
+					  // Move camera to desired node
+						cameraGoto(obj[n].x, obj[n].y);
+						break;
+					case "addEdge":
+					  // Add an edge between A and B
+					  alert(obj[n].name);
+					  break;
+				  }
 			  
 				  // Close the search box
 				  var searchBox = document.getElementById('searchBox');
