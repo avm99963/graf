@@ -46,53 +46,20 @@ function autocomplete(inp, obj, act) {
 					case "search":
 					  // Move camera to desired node
 						cameraGoto(obj[n].x, obj[n].y);
-					  // Close the search box
-					  var searchBox = document.getElementById('searchBox');
-					  searchBox.style.display = "none";
-					  
-					  // Empty the input bar
-					  var searchInput = document.getElementById('searchInput');
-					  searchInput.value = "";
 						break;
-					case "addEdge":					
+					case "addEdge":
 					  // Add an edge between A and B
-					  var sourceID = document.getElementById("node-id").innerText.substr(1);
-					  var edgeName = Math.min(sourceID, n) + "_" + Math.max(sourceID, n);
-					  if (!graf.edges[edgeName]) {
-						  graf.edges[edgeName] = {
-							  a: Math.min(sourceID, n),
-							  b: Math.max(sourceID, n),
-							  votes: 1
-						  };
-						  
-						  // Temporary fix, just for testing
-						  s.graph.addEdge({
-							  id: edgeName,
-							  source: sourceID,
-							  target: n,
-							  size: 0.5
-							});
-							
-						  clickNode(s, sourceID, s.graph.neighbors(sourceID));
-						  dialog.max();
-						  
-						  // Give a message of validation
-						  var edgeMSG = document.querySelector("#addedge-msg");
-						  addedEdgeMSG(edgeMSG);
-
-					  } else {
-						  alert("Edge already exists");
-					  }
-									  
-					  // Empty the input bar
-					  var addEdgeInput = document.getElementById('addedge-input');
-					  addEdgeInput.value = "";
-					  
-					  // Return to default view
-					  document.querySelector("#addedge-input").style.display = "none";  
-					  document.querySelector("#edge-list").style.display = "block";
+					  alert(obj[n].name);
 					  break;
 				  }
+			  
+				  // Close the search box
+				  var searchBox = document.getElementById('searchBox');
+				  searchBox.style.display = "none";
+				  
+				  // Empty the input bar
+				  var searchInput = document.getElementById('searchInput');
+				  searchInput.value = "";
 				  
 				  /*close the list of autocompleted values,
 				  (or any other open lists of autocompleted values:*/
@@ -177,23 +144,4 @@ function autocomplete(inp, obj, act) {
   document.addEventListener("click", function (e) {	  
       closeAllLists(e.target);
   });
-}
-
-function addedEdgeMSG(edgeMSG) {
-  var opacity = 8;
-  edgeMSG.style.display = "block";
-  
-  var opacityChange = window.setInterval(function() {
-	  edgeMSG.style.color = "rgba(0,0,0, "+ opacity/10 +")";
-	  var edgeList = document.querySelector("#edge-list ul");
-	  edgeList.style.backgroundColor = "rgba(0,200,0, "+ opacity/10 +")";
-	  --opacity;
-	  console.log(opacity);
-	}, 100);
-	
-  var backToDef = window.setTimeout(function() {
-	  edgeMSG.style.display = "none";
-	  edgeMSG.style.color = "black";
-	  window.clearInterval(opacityChange);
-	}, 1000);
 }
