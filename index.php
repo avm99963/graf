@@ -49,13 +49,13 @@
             </div>
             <div class="mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-card">
               <div class="mdl-card__title mdl-card--expand misc">
-                <h2 class="mdl-card__title-text">Miscelània</h2>
+                <h2 class="mdl-card__title-text">App de l'Assistent de Google</h2>
               </div>
               <div class="mdl-card__supporting-text">
-                Mira estadístiques sobre el graf, les últimes incorporacions i rep per correu electrònic les últimes novetats del graf.
+                Com a novetat, ara pots navegar el graf amb l'Assistent de Google! Disponible en castellà i en anglés.
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a href="javascript:alert('En construcció');" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                <a href="https://assistant.google.com/services/a/uid/000000249b9f19cb" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
                   Vés-hi
                 </a>
               </div>

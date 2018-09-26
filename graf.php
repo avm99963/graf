@@ -8,7 +8,7 @@ if (!isset($_POST["password"])) {
     exit();
 }
 
-if ($_POST["password"] != "forallexists") {
+if ($_POST["password"] != $conf["password"]) {
     header("Location: login.php?msg=wrong");
     exit();
 }

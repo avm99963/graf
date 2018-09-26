@@ -12,13 +12,18 @@ class write {
   }
 }
 
+function get_graph() {
+  global $conf;
+  return json_decode(file_get_contents($conf["apiurl"]), true);
+}
+
 if (!isset($_GET["action"])) {
   write::error(1, "No action provided");
 }
 
 switch ($_GET["action"]) {
   case "getgraf":
-  $graf = file_get_contents("https://grafo.dirba.io/api.php?req=getGraph");
+  $graf = file_get_contents($conf["apiurl"]);
   echo $graf;
   break;
 
