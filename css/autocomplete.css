@@ -29,7 +29,7 @@ input[type=submit] {
   border-top: none;
   z-index: 99;
   /*position the autocomplete items to be the same width as the container:*/
-  top: auto;
+  top: 100%;
   left: 0;
   right: 0;
   color: black;
