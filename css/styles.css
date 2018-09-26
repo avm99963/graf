@@ -96,7 +96,6 @@ html, body {
   right: 10px;
   bottom: 110px;
   z-index: 100;
-  display: none;
 }
 
 #zoomin {
@@ -247,10 +246,6 @@ html, body {
   }
 
   #min-dialog {
-    display: block!important;
-  }
-
-  #search {
     display: block!important;
   }
 }
