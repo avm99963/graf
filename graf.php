@@ -23,10 +23,6 @@ if ($_POST["password"] != $conf["password"]) {
     <link rel="manifest" href="manifest.json">
 
     <link rel="stylesheet" href="css/styles.css">
-      
-    <!-- Seach Bar CSS files -->  
-    <link rel="stylesheet" href="./css/modal.css"></link>
-    <link rel="stylesheet" href="./css/autocomplete.css"></link>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-blue.min.css" />
@@ -38,10 +34,10 @@ if ($_POST["password"] != $conf["password"]) {
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
   </head>
   <body>
-	<button id="searchButton"class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">search</i></button>
-	<button id="zoomin" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">zoom_in</i></button>
+    <button id="search" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">search</i></button>
+    <button id="zoomin" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">zoom_in</i></button>
     <button id="zoomout" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">zoom_out</i></button>
-	
+
     <div id="backdrop-container" style="display: none;">
       <div id="backdrop"></div>
     </div>
@@ -70,38 +66,36 @@ if ($_POST["password"] != $conf["password"]) {
         <p><span data-fill="year"></span>, <span data-fill="sex"></span>, <span data-fill="id"></span></p>
       </div>
     </div>
-    <!-- Search Box -->
-    <div id="searchBox" class="modal">
-      <!-- Search Box Content -->
-      <div class="modal-content">
-        <span class="closeBox">&times;</span>
-
-        <div class="in-box-content">
-            <center>
-                <form autocomplete="off">
-                  <div class="autocomplete">
-                    <input id="searchInput" type="text" placeholder="Busca una persona al graf">
-                  </div>
-                </form>
-            </center>
+    <!-- MD Search Box -->
+    <div class="md-google-search__metacontainer" style="display: none;">
+      <div class="md-google-search__container">
+        <div class="md-google-search">
+          <button class="md-google-search__search-btn">
+            <svg height="24px" viewBox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+          </button>
+          <div class="md-google-search__field-container">
+            <input id="search-input" class="md-google-search__field" autocomplete="off" placeholder="Search" value="" name="search" type="text" spellcheck="false" style="outline: none;">
+          </div>
+          <button class="md-google-search__empty-btn" style="display: none;">
+            <svg focusable="false" height="24px" viewBox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg>
+          </button>
         </div>
       </div>
     </div>
-       
+
+    <div class="autocomplete-container" style="display: none;">
+      <div id="autocomplete-list" class="autocomplete-items"></div>
+    </div>
+
     <div id="graf"></div>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js/1.2.0/sigma.min.js"></script>
-    <script>
-		// Initialize the graph and the sigma
-		var s, graf;
-	</script>
-	   
+
     <!-- Search Bar JS files -->
-    <script src="./js/modal.js"></script>
     <script src="./js/autocomplete.js" ></script>
-	
-	<script src="js/script.js"></script>
-	
+
+	   <script src="js/script.js"></script>
+
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <!--<script src="js/service-worker.js"></script>-->
   </body>

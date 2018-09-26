@@ -4,95 +4,93 @@ function autocomplete(inp, obj, act) {
   var currentFocus;
   /*execute a function when someone writes in the text field:*/
   inp.addEventListener("input", function(e) {
-      var a, b, i, val = this.value;
-      /*close any already open lists of autocompleted values*/
-      closeAllLists();
-      if (!val || val.length < 3) return false;
-      currentFocus = -1;
-	  
-      /*create a DIV element that will contain the items (values):*/
-      a = document.createElement("DIV");
-      a.setAttribute("id", this.id + "autocomplete-list");
-      a.setAttribute("class", "autocomplete-items");
-      /*append the DIV element as a child of the autocomplete container:*/
-      this.parentNode.appendChild(a);
-	  
-      /*for each item in the object...*/
-      for (node in obj) {
-		var nomNode = obj[node].name;
-				
-		if (nomNode.toUpperCase().includes(val.toUpperCase())) {
-			var parts = nomNode.toUpperCase().split(val.toUpperCase());
-			
+    var a, b, i, val = this.value;
+    /*close any already open lists of autocompleted values*/
+    clearLists();
+    document.querySelector(".md-google-search__empty-btn").style.display = (val ? "block" : "none");
+    if (!val || val.length < 3) return false;
+    currentFocus = -1;
+    var is_empty = true;
+
+    /*for each item in the object...*/
+    for (node in obj) {
+  		var nomNode = obj[node].name;
+
+  		if (nomNode.toUpperCase().includes(val.toUpperCase())) {
+        is_empty = false;
+  			var parts = nomNode.toUpperCase().split(val.toUpperCase());
+
 			  /*create a DIV element for each matching element:*/
-			  b = document.createElement("DIV");
-			  
+			  b = document.createElement("div");
+        b.setAttribute("class", "autocomplete-item");
+
 			  /*make the matching letters bold:*/
 			  if (parts[0].length == 0) b.innerHTML = "";
-			  else b.innerHTML = nomNode.substr(0, parts[0].length);
-			  b.innerHTML += "<strong>" + nomNode.substr(parts[0].length, val.length) + "</strong>";
-			  b.innerHTML += nomNode.substr(parts[0].length + val.length);
-			  b.innerHTML += " - <span class='autocomplete-year'>" + obj[node].year + "</span>";
-			  /*insert a input field that will hold the current object item's value:*/
-			  b.innerHTML += "<input type='hidden' value='" + node + "'>";
-			 
-			 /*execute a function when someone clicks on the item value (DIV element):*/
+			  else b.innerHTML = "<span style='font-weight: bold;'>" + nomNode.substr(0, parts[0].length) + "</span>";
+			  b.innerHTML += nomNode.substr(parts[0].length, val.length);
+			  b.innerHTML += "<span style='font-weight: bold;'>" + nomNode.substr(parts[0].length + val.length) + "</span>";
+			  b.innerHTML += " <span class='autocomplete-year'>(" + obj[node].year + ")</span>";
+
+        /*include node id to keep track of which is it*/
+        b.dataset.id = node;
+
+			  /*execute a function when someone clicks on the item value (DIV element):*/
 			  b.addEventListener("click", function(e) {
 				  /*insert the value for the autocomplete text field:*/
-				  var n = this.getElementsByTagName("input")[0].value;
+				  var n = this.dataset.id;
 				  inp.value = obj[n].name;
-				  
+
 				  switch (act) {
-					case "search":
-					  // Move camera to desired node
-						cameraGoto(obj[n].x, obj[n].y);
-						break;
-					case "addEdge":
-					  // Add an edge between A and B
-					  alert(obj[n].name);
-					  break;
+  					case "search":
+  					  // Move camera to desired node
+  						cameraGoto(obj[n].x, obj[n].y);
+  						break;
+  					case "addEdge":
+  					  // @TODO: Add an edge between A and B
+  					  alert(obj[n].name);
+  					  break;
 				  }
-			  
-				  // Close the search box
-				  var searchBox = document.getElementById('searchBox');
-				  searchBox.style.display = "none";
-				  
-				  // Empty the input bar
-				  var searchInput = document.getElementById('searchInput');
-				  searchInput.value = "";
-				  
+
 				  /*close the list of autocompleted values,
 				  (or any other open lists of autocompleted values:*/
-				  closeAllLists();
+				  clearLists();
 			  });
-			  
+
 			  // Set "data-edges" attribute and compare with others
 			  var nEdges = Object.keys(s.graph.neighbors(node)).length;
 			  b.dataset.edges = nEdges;
 			  var inserted = false;
-			  
+
 			  // Sort nodes by degree
-			  for (i in a.childNodes) {
-				  var child = a.childNodes[i];
+			  for (i in document.querySelector("#autocomplete-list").childNodes) {
+				  var child = document.querySelector("#autocomplete-list").childNodes[i];
 				  if (!child.dataset) break;
 				  if (nEdges > child.dataset.edges) {
-					  a.insertBefore(b, child);
+					  document.querySelector("#autocomplete-list").insertBefore(b, child);
 					  inserted = true;
 					  break;
 				  }
 			  }
-			  
+
 			  if (!inserted) {
-				  a.appendChild(b);
-				  console.log("inserted");
+				  document.querySelector("#autocomplete-list").appendChild(b);
 			  }
 		  }
-        }
+    }
+
+    document.querySelector(".autocomplete-container").style.display = (is_empty ? "none" : "block");
   });
+
+  document.querySelector(".md-google-search__empty-btn").addEventListener("click", function() {
+    document.querySelector("#search-input").value = "";
+    this.style.display = "none";
+  });
+
   /*execute a function presses a key on the keyboard:*/
   inp.addEventListener("keydown", function(e) {
-      var x = document.getElementById(this.id + "autocomplete-list");
+      var x = document.getElementById("autocomplete-list");
       if (x) x = x.getElementsByTagName("div");
+      if (x.length == 0) return;
       if (e.keyCode == 40) {
         /*If the objow DOWN key is pressed,
         increase the currentFocus variable:*/
@@ -130,18 +128,15 @@ function autocomplete(inp, obj, act) {
       x[i].classList.remove("autocomplete-active");
     }
   }
-  function closeAllLists(elmnt) {
+  function clearLists() {
     /*close all autocomplete lists in the document,
     except the one passed as an argument:*/
-    var x = document.getElementsByClassName("autocomplete-items");
-    for (var i = 0; i < x.length; i++) {
-      if (elmnt != x[i] && elmnt != inp) {
-        x[i].parentNode.removeChild(x[i]);
-      }
-    }
+    var x = document.querySelector("#autocomplete-list");
+    x.innerHTML = "";
+    document.querySelector(".autocomplete-container").style.display = "none";
   }
   /*execute a function when someone clicks in the document:*/
-  document.addEventListener("click", function (e) {	  
-      closeAllLists(e.target);
+  document.addEventListener("click", function (e) {
+      clearLists();
   });
 }
