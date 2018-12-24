@@ -21,8 +21,9 @@ if ($_POST["password"] != $conf["password"]) {
 
     <meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="manifest" href="manifest.json">
-
-    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- <link rel="stylesheet" href="css/styles.css"> -->
+    <!-- PER DEBUGAR --> <link rel="stylesheet" href="styles_debug.css">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-blue.min.css" />
@@ -34,9 +35,12 @@ if ($_POST["password"] != $conf["password"]) {
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
   </head>
   <body>
+  <button id="settings" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">settings</i></button>
     <button id="search" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">search</i></button>
     <button id="zoomin" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">zoom_in</i></button>
     <button id="zoomout" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">zoom_out</i></button>
+
+  <div id="yearlist" style="padding:10px; padding-top:70px; float:right; display: none"> </div>
 
     <div id="backdrop-container" style="display: none;">
       <div id="backdrop"></div>
@@ -88,13 +92,14 @@ if ($_POST["password"] != $conf["password"]) {
     </div>
 
     <div id="graf"></div>
-
+  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js/1.2.0/sigma.min.js"></script>
 
     <!-- Search Bar JS files -->
     <script src="./js/autocomplete.js" ></script>
 
-	   <script src="js/script.js"></script>
+    <!-- <script src="js/script.js"></script> -->
+    <!-- PER DEBUGAR --> <script src="script_debug.js"></script>
 
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <!--<script src="js/service-worker.js"></script>-->
