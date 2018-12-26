@@ -3,7 +3,7 @@
 
 This project is an alternative read-only user-interface for FME's graph. It is compatible with mobile devices.
 
-# Things done
+## Things done
 Search-bar with autocomplete
 Dialog for node statistics
 Easter-egg
