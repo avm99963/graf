@@ -26,12 +26,17 @@ if ($_POST["password"] != $conf["password"]) {
 <link rel="manifest" href="manifest.json">
 
 <!-- own css stylesheets -->
+<!-- FOR DEPLOYING -->
+<link rel="stylesheet" href="css/styles.css">
+
+<!-- FOR CODING
 <link rel="stylesheet" href="css/general.css">
 <link rel="stylesheet" href="css/graf.css">
 <link rel="stylesheet" href="css/dialog.css">
 <link rel="stylesheet" href="css/option-buttons.css">
 <link rel="stylesheet" href="css/year-list.css">
 <link rel="stylesheet" href="css/search-bar.css">
+-->
 
 
 <!-- imported css stylesheets -->
@@ -166,6 +171,11 @@ if ($_POST["password"] != $conf["password"]) {
 
 	<!-- our scripts -->
 	<script src="./js/autocomplete.js"></script>
+
+	<!-- FOR DEPLOYING -->
+	<script src="./js/script.js"></script>
+
+	<!-- FOR CODING
 	<script src="./js/circle-mode.js"></script>
 	<script src="./js/graf.js"></script>
 	<script src="./js/limit-years.js"></script>
@@ -173,6 +183,7 @@ if ($_POST["password"] != $conf["password"]) {
 	<script src="./js/dialog.js"></script>
 	<script src="./js/camera.js"></script>
 	<script src="./js/easter-egg.js"></script>
+	-->
 	
 	<!--<script src="js/service-worker.js"></script>-->
 

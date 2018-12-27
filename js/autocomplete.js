@@ -1,3 +1,5 @@
+// *********** HERE STARTS autocomplete.js *************
+
 function autocomplete(inp, obj, act) {
 	/*the autocomplete function takes two arguments,
 	the text field element and an objay of possible autocompleted values:*/
@@ -41,10 +43,17 @@ function autocomplete(inp, obj, act) {
 					var n = this.dataset.id;
 					inp.value = obj[n].name;
 
+					var node = null;
+					
+					s.graph.nodes().forEach( function(nnode) {
+						if(nnode.id == n) node = nnode;
+					});
+					
+
 					switch (act) {
 						case "search":
 							// Move camera to desired node
-							cameraGoto(obj[n].x, obj[n].y);
+							cameraGoto(node.x, node.y);
 							break;
 						case "addEdge":
 							// @TODO: Add an edge between A and B

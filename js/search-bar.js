@@ -1,3 +1,6 @@
+// *********** HERE STARTS search-bar.js *************
+
+
 function altSearchBar() {
 	if (document.querySelector(".md-google-search__metacontainer").style.display == "none") {
 		document.querySelector(".md-google-search__metacontainer").style.display = "block";

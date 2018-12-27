@@ -1,3 +1,5 @@
+// *********** HERE STARTS dialog.js *************
+
 window.addEventListener("load", initDialog);
 
 var dialog = {

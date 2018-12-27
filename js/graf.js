@@ -1,3 +1,5 @@
+// *********** HERE STARTS graf.js *************
+
 window.addEventListener("load", initGraf);
 
 // s is the sigma graph
@@ -46,7 +48,7 @@ function initGraf() {
 			edgeColor: "default",
 			defaultLabelColor: "#fff",
 			autoRescale: false,
-			zoomMax: 10,
+			zoomMax: 30,
 			// enableEdgeHovering: true,
 			font: "Roboto",
 			labelThreshold: 5
@@ -60,11 +62,19 @@ function initGraf() {
 		graf = JSON.parse(responseText);
 
 		// does graf.nodes have a size attribute?
-		var sizegraf = 0;
+		var rectBorrar = [[0,0], [0,0], [0,0], [0,0]];
 		for (var i in graf.nodes) {
-			sizegraf++;
+			if (graf.nodes[i].name == "Erase")    rectBorrar[0] = [ graf.nodes[i].x , graf.nodes[i].y ];
+			if (graf.nodes[i].name == "Borrar")   rectBorrar[1] = [ graf.nodes[i].x , graf.nodes[i].y ];
+			if (graf.nodes[i].name == "Esborrar") rectBorrar[2] = [ graf.nodes[i].x , graf.nodes[i].y ];
+			if (graf.nodes[i].name == "Delete")   rectBorrar[3] = [ graf.nodes[i].x , graf.nodes[i].y ];
 		}
 		
+		var sizegraf = 0;
+		for (var i in graf.nodes) {
+			if ( isInRect(graf.nodes[i].x, graf.nodes[i].y, rectBorrar) ) continue;	
+			sizegraf++;
+		}		
 		var nnode = 0;
 		for (var i in graf.nodes) {
 			var ncolor = null;
@@ -78,6 +88,8 @@ function initGraf() {
 			
 			var newX = 5000*Math.cos( 2*Math.PI*nnode/sizegraf );
 			var newY = 5000*Math.sin( 2*Math.PI*nnode/sizegraf );	
+			
+			if (isInRect(graf.nodes[i].x, graf.nodes[i].y, rectBorrar) ) continue;	
 			
 			s.graph.addNode({
 				// we add color, originalColor, size, originalX..Y, circleX..Y atributes
@@ -96,9 +108,12 @@ function initGraf() {
 				originalColor: ncolor
 			});
 			nnode++;
+		
 		}
 
 		for (var i in graf.edges) {
+			if (isInRect(graf.nodes[graf.edges[i].a].x, graf.nodes[graf.edges[i].a].y, rectBorrar)) continue;	
+			if (isInRect(graf.nodes[graf.edges[i].b].x, graf.nodes[graf.edges[i].b].y, rectBorrar)) continue;	
 			
 			s.graph.addEdge({
 				id: i,
@@ -113,7 +128,8 @@ function initGraf() {
 			var nodeId = e.data.node.id,
 				toKeep = s.graph.neighbors(nodeId);
 				// toKeep[nodeId] = e.data.node;
-	
+			
+			
 			s.graph.nodes().forEach(function(n) {
 				if (toKeep[n.id] || n.id == nodeId) {
 					n.color = n.originalColor;
@@ -131,6 +147,12 @@ function initGraf() {
 			});
 			
 			if (circleMode) {
+				s.graph.nodes().forEach(function (n) {
+					n.x = n.circleX;
+					n.y = n.circleY;
+					n.size = 10;
+				});
+				
 				e.data.node.x = 0;
 				e.data.node.y = 0;
 				e.data.node.size = 30;

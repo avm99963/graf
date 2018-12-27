@@ -1,3 +1,5 @@
+// *********** HERE STARTS limit-years.js *************
+
 window.addEventListener("load", addYearList);
 
 var limitYears = false;
@@ -45,10 +47,12 @@ function altYearList() {
 	
 	if(yearlist.style.display == "none"){
 		yearlist.style.display = "block";
+		document.querySelector("#settings i").innerText = "close";
 		yearLimits = true;
 	}
 	else{
 		yearlist.style.display = "none";
+		document.querySelector("#settings i").innerText = "settings";
 		yearLimits = true;
 	}
 }

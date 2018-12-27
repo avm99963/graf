@@ -1,6 +1,7 @@
+/* ********** HERE STARTS year-list.css ****** */
 #year-list {
 	padding: 10px;
-	padding-top: 70px;
+	padding-top: 0px;
 	float: right;
 	position:relative;
 	z-index:10;

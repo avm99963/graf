@@ -1,3 +1,5 @@
+// *********** HERE STARTS easter-egg.js *************
+
 window.addEventListener("load", initEasterEgg);
 
 var seq = [38, 38, 40, 40, 37, 39, 37, 39, 65, 66, 13];

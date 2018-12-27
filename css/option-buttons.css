@@ -1,3 +1,4 @@
+/* ********** HERE STARTS search-bar.css ****** */
 #circle-mode {
 	position: absolute;
 	right: 10px;
@@ -31,4 +32,12 @@
 	right: 10px;
 	bottom: 10px;
 	z-index: 100;
+}
+
+#zoomin.touch {
+	display: none;
+}
+
+#zoomout.touch {
+	display: none;
 }
