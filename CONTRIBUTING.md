@@ -1,4 +1,4 @@
-#Contributing
+# Contributing
 For the sake of safe and understandable code, we divide our JS scripts and CSS styles into multiples files. But, to make the page load faster, before committing, please run `sh concatenate.sh` so all those files are concatenated.
 
 This will concatenate the files in the following way:

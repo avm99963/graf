@@ -4,6 +4,7 @@
 3. Make circle-mode + year-limit = smaller-circle-mode
 4. Modify the autocomplete so that eliminated nodes don't appear
 5. Separate non-connex nodes in circle-mode
+6. Add all these TODO items to the bug tracker
 
 ## Things done
 1. Search bar with autocomplete
