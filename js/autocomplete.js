@@ -18,7 +18,7 @@ function autocomplete(inp, obj, act, rectBorrar) {
     for (node in obj) {
       var nomNode = obj[node].name;
 
-      if (isInRect(node.x, node.y, rectBorrar)) continue;
+      if (isInRect(obj[node].x, obj[node].y, rectBorrar)) continue;
       
       if (nomNode.toUpperCase().includes(val.toUpperCase())) {
         is_empty = false;
