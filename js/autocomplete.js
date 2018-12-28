@@ -1,6 +1,6 @@
 // *********** HERE STARTS autocomplete.js *************
 
-function autocomplete(inp, obj, act) {
+function autocomplete(inp, obj, act, rectBorrar) {
   /*the autocomplete function takes two arguments,
   the text field element and an objay of possible autocompleted values:*/
   var currentFocus;
@@ -18,6 +18,8 @@ function autocomplete(inp, obj, act) {
     for (node in obj) {
       var nomNode = obj[node].name;
 
+      if (isInRect(node.x, node.y, rectBorrar)) continue;
+      
       if (nomNode.toUpperCase().includes(val.toUpperCase())) {
         is_empty = false;
         var parts = nomNode.toUpperCase().split(val.toUpperCase());
