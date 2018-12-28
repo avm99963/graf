@@ -1,6 +1,4 @@
-// *********** HERE STARTS easter-egg.js *************
-
-window.addEventListener("load", initEasterEgg);
+// *********** HERE STARTS just-do-it.js *************
 
 var seq = [38, 38, 40, 40, 37, 39, 37, 39, 65, 66, 13];
 var cur = 0;
@@ -27,7 +25,7 @@ function justdoit() {
 }
 
 
-function initEasterEgg() {
+function initJustDoIt() {
 	document.addEventListener("keydown", function() {
 		if (event.key == "f" && event.target.getAttribute("id") != "search-input") altSearchBar();
 		if (event.which == seq[cur]) {

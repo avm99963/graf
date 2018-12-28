@@ -1,7 +1,5 @@
 // *********** HERE STARTS dialog.js *************
 
-window.addEventListener("load", initDialog);
-
 var dialog = {
 	fill: function(data, text, html=false) {
 		var el = document.querySelectorAll("*[data-fill=\""+data+"\"]");
