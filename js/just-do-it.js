@@ -26,7 +26,7 @@ function justdoit() {
 
 
 function initJustDoIt() {
-	document.addEventListener("keydown", function() {
+	document.addEventListener("keydown", function(event) {
 		if (event.key == "f" && event.target.getAttribute("id") != "search-input") altSearchBar();
 		if (event.which == seq[cur]) {
 			if (cur < seq.length) {
