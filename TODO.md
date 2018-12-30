@@ -2,7 +2,7 @@
 1. Make limit-years prettier and inclusive/exclusive with double check-boxes
 2. Make statistics about the graph: biggest K_n, diameter, etc...
 3. Make circle-mode + year-limit = smaller-circle-mode
-4. Modify the autocomplete so that eliminated nodes don't appear
+~~4. Modify the autocomplete so that eliminated nodes don't appear~~
 5. Separate non-connex nodes in circle-mode
 6. Add all these TODO items to the bug tracker
 
