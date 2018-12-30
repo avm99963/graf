@@ -166,7 +166,7 @@ function initGraf() {
     initSearchBar();
 
     s.refresh();
-    autocomplete(document.querySelector("#search-input"), graf.nodes, "search");
+    autocomplete(document.querySelector("#search-input"), graf.nodes, "search", rectBorrar);
   });
 }
 

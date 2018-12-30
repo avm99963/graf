@@ -214,7 +214,7 @@ function initGraf() {
     initSearchBar();
 
     s.refresh();
-    autocomplete(document.querySelector("#search-input"), graf.nodes, "search");
+    autocomplete(document.querySelector("#search-input"), graf.nodes, "search", rectBorrar);
   });
 }
 
@@ -305,9 +305,16 @@ function altYearList() {
 	}
 }
 
+function first_day(year) {
+	start_course = new Date(year + '-09-12');
+	return start_course;
+}
+
 function addYearList() {
 	var ylistspan = document.querySelector("#year-list-span")
-	for(var year = 2006; year < 2019; year++) {
+	var year = 2007;
+	var today = new Date();
+	while (first_day(year) < today) {
 		var lab = document.createElement("label");
 		lab.setAttribute("class", "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect custom-checkbox");
 		lab.setAttribute("for", "checkbox-"+year);
@@ -340,6 +347,7 @@ function addYearList() {
 		lab.appendChild(span);
 		ylistspan.appendChild(lab);
 		ylistspan.insertAdjacentHTML("beforeend", "<br>");
+		++year;
 	}
 
 	document.querySelector("#settings").addEventListener("click", altYearList);
@@ -519,7 +527,7 @@ function justdoit() {
 
 
 function initJustDoIt() {
-	document.addEventListener("keydown", function() {
+	document.addEventListener("keydown", function(event) {
 		if (event.key == "f" && event.target.getAttribute("id") != "search-input") altSearchBar();
 		if (event.which == seq[cur]) {
 			if (cur < seq.length) {
