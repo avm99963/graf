@@ -24,13 +24,16 @@ if ($_POST["password"] != $conf["password"]) {
     <link rel="manifest" href="manifest.json">
 
     <!-- own css stylesheets -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/graf.css">
+    <link rel="stylesheet" href="css/dialog.css">
+    <link rel="stylesheet" href="css/option-buttons.css">
+    <link rel="stylesheet" href="css/year-list.css">
+    <link rel="stylesheet" href="css/search-bar.css">
 
     <!-- imported css stylesheets -->
-    <link rel="stylesheet"
-    href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet"
-    href="https://code.getmdl.io/1.3.0/material.blue_grey-blue.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-blue.min.css" />
 
     <!-- Apple web app -->
     <link rel="apple-touch-icon" href="img/graf.png">
@@ -112,8 +115,15 @@ if ($_POST["password"] != $conf["password"]) {
 
 
     <!-- Our scripts -->
-    <script src="./js/autocomplete.js"></script>
-    <script src="./js/script.js"></script>
+    <script src="js/autocomplete.js"></script>
+    <script src="js/circle-mode.js"></script>
+    <script src="js/graf.js"></script>
+    <script src="js/limit-years.js"></script>
+    <script src="js/search-bar.js"></script>
+    <script src="js/dialog.js"></script>
+    <script src="js/camera.js"></script>
+    <script src="js/just-do-it.js"></script>
+    <script src="js/init.js"></script>
 
     <!-- imported scripts -->
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
