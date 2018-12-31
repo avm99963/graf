@@ -4,28 +4,15 @@ circleMode = false;
 
 function initCircleMode() {
   document.querySelector("#circle-mode").addEventListener('click', function() {
-    if(circleMode) {
-      circleMode = false;
-      document.querySelector("#circle-mode i").innerText = "trip_origin";
+    circleMode = !circleMode;
+    document.querySelector("#circle-mode i").innerText = (circleMode ? "scatter_plot" : "trip_origin");
+    s.graph.nodes().forEach(function(n) {
+      n.x = (circleMode ? n.circleX : n.originalX);
+      n.y = (circleMode ? n.circleY : n.originalY);
+      n.size = 10;
+    });
 
-      s.graph.nodes().forEach(function(n) {
-        n.x = n.originalX;
-        n.y = n.originalY;
-        n.size = 10;
-      });
-
-      s.refresh();
-    } else {
-      circleMode = true;
-      document.querySelector("#circle-mode i").innerText = "scatter_plot";
-
-      s.graph.nodes().forEach(function(n) {
-        n.x = n.circleX;
-        n.y = n.circleY;
-      });
-
-      s.refresh();
-    }
+    s.refresh();
   });
 }
 
@@ -34,10 +21,10 @@ function isInRect(x, y, rect) {
   if (y < -10000 || y > 10000) return true;
 
   var ans = true;
-  var c = crossProd (rect[0], rect[1], x, y);
+  var c = crossProd(rect[0], rect[1], x, y);
 
-  for(var i = 1; i < 4; i++) {
-    var temp = crossProd (rect[i], rect[(i+1)%4], x, y);
+  for (var i = 1; i < 4; i++) {
+    var temp = crossProd(rect[i], rect[(i+1)%4], x, y);
     if (c*temp < 0) ans = false;
   }
   return ans;
@@ -118,7 +105,7 @@ function initGraf() {
 
     var sizegraf = 0;
     for (var i in graf.nodes) {
-      if ( isInRect(graf.nodes[i].x, graf.nodes[i].y, rectBorrar) ) continue;
+      if (isInRect(graf.nodes[i].x, graf.nodes[i].y, rectBorrar)) continue;
       sizegraf++;
     }
     var nnode = 0;
@@ -132,8 +119,8 @@ function initGraf() {
       // post-processing for year corrections
       if(1970 < graf.nodes[i].year && graf.nodes[i].year < 2004) graf.nodes[i].year += 18;
 
-      var newX = 5000*Math.cos( 2*Math.PI*nnode/sizegraf );
-      var newY = 5000*Math.sin( 2*Math.PI*nnode/sizegraf );
+      var newX = 5000*Math.cos( 2*Math.PI*nnode/sizegraf ) + 725;
+      var newY = 5000*Math.sin( 2*Math.PI*nnode/sizegraf ) + 800;
 
       if (isInRect(graf.nodes[i].x, graf.nodes[i].y, rectBorrar) ) continue;
 

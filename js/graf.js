@@ -70,7 +70,7 @@ function initGraf() {
 
     var sizegraf = 0;
     for (var i in graf.nodes) {
-      if ( isInRect(graf.nodes[i].x, graf.nodes[i].y, rectBorrar) ) continue;
+      if (isInRect(graf.nodes[i].x, graf.nodes[i].y, rectBorrar)) continue;
       sizegraf++;
     }
     var nnode = 0;
@@ -84,8 +84,8 @@ function initGraf() {
       // post-processing for year corrections
       if(1970 < graf.nodes[i].year && graf.nodes[i].year < 2004) graf.nodes[i].year += 18;
 
-      var newX = 5000*Math.cos( 2*Math.PI*nnode/sizegraf );
-      var newY = 5000*Math.sin( 2*Math.PI*nnode/sizegraf );
+      var newX = 5000*Math.cos( 2*Math.PI*nnode/sizegraf ) + 725;
+      var newY = 5000*Math.sin( 2*Math.PI*nnode/sizegraf ) + 800;
 
       if (isInRect(graf.nodes[i].x, graf.nodes[i].y, rectBorrar) ) continue;
 
