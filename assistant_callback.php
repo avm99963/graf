@@ -149,7 +149,7 @@ switch ($json["queryResult"]["intent"]["displayName"]) {
     } else {
       arsort($neighbors);
       $params = array("person" => $closest, "count" => (count($neighbors) == 1 ? $i18n->msg("count_singular") : $i18n->msg("count_plural", array("count" => count($neighbors)))));
-      /*if (conv::has("actions.capability.SCREEN_OUTPUT", $json)) {
+      if (conv::has("actions.capability.SCREEN_OUTPUT", $json)) {
         $items = [
           array(
             "simpleResponse" => array(
@@ -177,15 +177,14 @@ switch ($json["queryResult"]["intent"]["displayName"]) {
           $items[1]["tableCard"]["rows"][] = array("cells" => [array("text" => $neighbor), array("text" => (string)$votes)]);
         }
         conv::ask_custom($items);
-      } else {*/ // This code shows a table if the user has a screen, but
+      } else {   // This code shows a table if the user has a screen, but
                  // unfortunately tables are not public yet.
-                 // @TODO: Uncomment when tables are out of developer preview.
         $people = array_keys($neighbors);
         $people_string = comma($people);
         $params["edges"] = $people_string;
         $num = mt_rand(1, 3);
         conv::ask_followup($i18n->msg("edges_".$num, $params), $i18n);
-      /*}*/
+      }
     }
   } else {
     conv::ask_followup($i18n->msg("not_found", array("person" => $json["queryResult"]["parameters"]["Vertex"])), $i18n);
