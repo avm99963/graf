@@ -1,5 +1,3 @@
-// *********** HERE STARTS limit-years.js *************
-
 var limitYears = false;
 var showYears = new Set();
 

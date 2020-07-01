@@ -1,5 +1,3 @@
-// *********** HERE STARTS init.js *************
-
 function init() {
   initGraf();
   addYearList();

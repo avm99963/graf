@@ -1,5 +1,3 @@
-// *********** HERE STARTS camera.js *************
-
 function cameraGoto(nodeX, nodeY) {
 	sigma.misc.animation.camera( s.camera,
 		{ x: nodeX, y: nodeY, ratio: 1 },

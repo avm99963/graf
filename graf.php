@@ -3,7 +3,7 @@ require_once ("config.php");
 
 session_start();
 
-if (! isset($_POST["password"])) {
+if (!isset($_POST["password"])) {
   header("Location: login.php");
   exit();
 }
@@ -23,7 +23,7 @@ if ($_POST["password"] != $conf["password"]) {
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="manifest" href="manifest.json">
 
-    <!-- own css stylesheets -->
+    <!-- Our CSS stylesheets -->
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/graf.css">
     <link rel="stylesheet" href="css/dialog.css">
@@ -31,7 +31,7 @@ if ($_POST["password"] != $conf["password"]) {
     <link rel="stylesheet" href="css/year-list.css">
     <link rel="stylesheet" href="css/search-bar.css">
 
-    <!-- imported css stylesheets -->
+    <!-- External CSS stylesheets -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-blue.min.css" />
 
@@ -42,7 +42,7 @@ if ($_POST["password"] != $conf["password"]) {
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
   </head>
   <body>
-    <!-- side buttons -->
+    <!-- Side buttons -->
     <div id="option-buttons">
       <button id="circle-mode" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">trip_origin</i></button>
       <button id="settings" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">settings</i></button>
@@ -51,7 +51,7 @@ if ($_POST["password"] != $conf["password"]) {
       <button id="zoomout" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored"><i class="material-icons">zoom_out</i></button>
     </div>
 
-    <!-- limit year list -->
+    <!-- Limit year list -->
     <div id="year-list" style="display:none">
       <span id="year-list-span"></span>
     </div>
@@ -125,7 +125,7 @@ if ($_POST["password"] != $conf["password"]) {
     <script src="js/just-do-it.js"></script>
     <script src="js/init.js"></script>
 
-    <!-- imported scripts -->
+    <!-- External scripts -->
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
     <!--<script src="js/service-worker.js"></script>-->

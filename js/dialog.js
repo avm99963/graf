@@ -1,5 +1,3 @@
-// *********** HERE STARTS dialog.js *************
-
 var dialog = {
 	fill: function(data, text, html=false) {
 		var el = document.querySelectorAll("*[data-fill=\""+data+"\"]");

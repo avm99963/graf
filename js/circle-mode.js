@@ -1,5 +1,3 @@
-// *********** HERE STARTS circle-mode.js *************
-
 circleMode = false;
 
 function initCircleMode() {

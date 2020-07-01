@@ -1,5 +1,3 @@
-// *********** HERE STARTS graf.js *************
-
 // s is the sigma graph
 // graf is the JSON graph
 var s, graf;

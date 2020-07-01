@@ -1,5 +1,3 @@
-// *********** HERE STARTS autocomplete.js *************
-
 function autocomplete(inp, obj, act, rectBorrar) {
   /*the autocomplete function takes two arguments,
   the text field element and an objay of possible autocompleted values:*/
