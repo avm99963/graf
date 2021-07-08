@@ -15,8 +15,13 @@ function xhr(method, url, params, callback) {
     }
   }
   http.onload = function() {
-    if(this.status != 200) {
+    if (this.status != 200) {
       console.warn("Attention, status code "+this.status+" when loading via xhr url "+url);
+
+      console.log(response);
+      if (('error' in response) && ('msg' in response)) {
+        alert(response.msg);
+      }
     }
     callback(this.responseText, this.status);
   };
